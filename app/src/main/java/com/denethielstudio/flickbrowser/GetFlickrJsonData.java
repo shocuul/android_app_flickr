@@ -77,12 +77,14 @@ public class GetFlickrJsonData extends GetRawData {
                 String title = jsonPhoto.getString(FLICKR_TITLE);
                 String author = jsonPhoto.getString(FLICKR_AUTHOR);
                 String authorId = jsonPhoto.getString(FLICKR_AUTHOR_ID);
-                String link = jsonPhoto.getString(FLICKR_LINK);
+                //String link = jsonPhoto.getString(FLICKR_LINK);
                 String tags = jsonPhoto.getString(FLICKR_TAGS);
 
                 JSONObject jsonMedia = jsonPhoto.getJSONObject(FLICKR_MEDIA);
 
                 String photoUrl = jsonMedia.getString(FLICKR_PHOTO_URL);
+
+                String link = photoUrl.replaceFirst("_m.","_b.");
 
                 Photo photoObject = new Photo(title,author,authorId,link,tags,photoUrl);
                 this.mPhotos.add(photoObject);

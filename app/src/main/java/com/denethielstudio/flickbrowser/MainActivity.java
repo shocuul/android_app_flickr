@@ -3,6 +3,7 @@ package com.denethielstudio.flickbrowser;
 import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -54,7 +55,11 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
             @Override
             public void onItemLongClick(View view, int position) {
-                Toast.makeText(MainActivity.this,"Long Tap",Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this,"Long Tap",Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(MainActivity.this,ViewPhotoDetailsActivity.class);
+                intent.putExtra(PHOTO_TRANSFER,flickrRecyclerViewAdapter.getPhoto(position));
+                startActivity(intent);
 
 
             }

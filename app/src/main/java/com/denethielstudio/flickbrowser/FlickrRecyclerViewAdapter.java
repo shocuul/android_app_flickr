@@ -25,11 +25,11 @@ public class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrImageV
     @Override
     public void onBindViewHolder(FlickrImageViewHolder holder, int position) {
         Photo photoItem = mphotoList.get(position);
-        Picasso.with(mContext).load(photoItem.getmImage())
+        Picasso.with(mContext).load(photoItem.getImage())
                 .error(R.drawable.placeholder)
                 .placeholder(R.drawable.placeholder)
                 .into(holder.thumbnail);
-        holder.title.setText(photoItem.getmTitle());
+        holder.title.setText(photoItem.getTitle());
     }
 
     @Override
@@ -50,5 +50,9 @@ public class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrImageV
     public void loadNewData(List<Photo> newPhotos){
         mphotoList = newPhotos;
         notifyDataSetChanged();
+    }
+
+    public Photo getPhoto(int position){
+        return (null != mphotoList ? mphotoList.get(position):null);
     }
 }
